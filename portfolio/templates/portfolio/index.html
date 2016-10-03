@@ -1,0 +1,50 @@
+{% load staticfiles %}
+<html>
+<head>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'css/portfolio.css' %}">
+</head>
+
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+                <img alt="Brand" src="...">
+            </a>
+        </div>
+    </div>
+</nav>
+
+<div class="page-header">
+    <h1>The world is changing...</h1>
+</div>
+
+<div class="row">
+    <div class="col-md-10">
+        <h1>Recent Clients</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-10">
+        {% if latest_question_list %}
+        {% for company in latest_question_list %}
+        <div class="col-md-5">
+            <div>
+                <a href="#" class="thumbnail">
+                    <img src={{ company.pic_url }}>
+                </a>
+            </div>
+            <div>
+                {{ company.name }} - {{ company.type }}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% else %}
+<p>No polls are available.</p>
+{% endif %}
+</body>
+</html>
